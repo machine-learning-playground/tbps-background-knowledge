@@ -49,13 +49,13 @@ Mỗi phần tử (entry) trong file JSON này chứa các thông tin sau:
 {
   "split": "train",
   "captions": [
-    "A man wearing a black jacket and blue jeans.",
-    "The person has short hair and is carrying a black bag."
+    "A pedestrian with dark hair is wearing red and white shoes, a black hooded sweatshirt, and black pants.",
+    "The person has short black hair and is wearing black pants, a long sleeve black top, and red sneakers."
   ],
-  "file_path": "imgs/000001.jpg",
+  "file_path": "CUHK01/0363004.png",
   "processed_tokens": [
-    ["a", "man", "wearing", "a", "black", "jacket", "and", "blue", "jeans"],
-    ["the", "person", "has", "short", "hair", "and", "is", "carrying", "a", "black", "bag"]
+    ["a", "pedestrian", "with", "dark", "hair", "is", "wearing", "red", "and", "white", "shoes", "a", "black", "hooded", "sweatshirt", "and", "black", "pants"],
+    ["the", "person", "has", "short", "black", "hair", "and", "is", "wearing", "black", "pants", "a", "long", "sleeve", "black", "top", "and", "red", "sneakers"]
   ],
   "id": 1
 }
