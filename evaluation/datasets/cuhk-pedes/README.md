@@ -21,10 +21,15 @@ Bộ dữ liệu này được giới thiệu trong bài báo:
 
 
 [7] S. Li, T. Xiao, H. Li, B. Zhou, D. Yue, X. Wang, Person search with natural language description, in: Proceedings of the IEEE conference on computer vision and pattern recognition, 2017, pp. 1970–1979.
+
 [72] W. Li, R. Zhao, T. Xiao, X. Wang, Deepreid: Deep filter pairing neural network for person re-identification, in: Proceedings of the 2014 IEEE Conference on Computer Vision and Pattern Recognition, 2014, pp. 152–159.
+
 [47] L. Zheng, L. Shen, L. Tian, S. Wang, J. Bu, Q. Tian, Person reidentification meets image search, arXiv preprint arXiv:1502.02171 (2015).
+
 [73] T. Xiao, S. Li, B. Wang, L. Lin, X. Wang, Joint detection and identification feature learning for person search, in: Proceedings of the IEEE conference on computer vision and pattern recognition, 2017, pp. 3415–3424.
+
 [74] D. Gray, S. Brennan, H. Tao, Evaluating appearance models for recognition, reacquisition, and tracking, in: Proc. IEEE international workshop on performance evaluation for tracking and surveillance (PETS), volume 3, 2007, pp. 1–7.
+
 [75] W. Li, R. Zhao, X. Wang, Human reidentification with transferred metric learning, in: Computer Vision–ACCV 2012: 11th Asian Conference on Computer Vision, Daejeon, Korea, November 5-9, 2012, Revised Selected Papers, Part I 11, Springer, 2013, pp. 31–44.
 
 ---

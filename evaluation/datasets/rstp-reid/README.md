@@ -19,6 +19,7 @@ Dataset RSTP‑Reid được xây dựng và giới thiệu trong bài báo:
 > [Paper link](https://arxiv.org/abs/2109.05534)
 
 [31] A. Zhu, Z. Wang, Y. Li, X. Wan, J. Jin, T. Wang, F. Hu, G. Hua, Dssl: Deep surroundings-person separation learning for text-based person retrieval, in: Proceedings of the 29th ACM international conference on multimedia, Association for Computing Machinery, 2021, pp. 209–217.
+
 [76] L. Wei, S. Zhang, W. Gao, Q. Tian, Person transfer gan to bridge domain gap for person re-identification, in: Proceedings of the IEEE conference on computer vision and pattern recognition, 2018, pp. 79–88.
 
 ---
