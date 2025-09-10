@@ -9,7 +9,7 @@ Tương tự như CUHK-PEDES, bộ dữ liệu này bao gồm số lượng lớ
 
 Mỗi ảnh chỉ đi kèm một mô tả văn bản, với độ dài trung bình 37,2 từ mỗi mô tả.
 
-So với CUHK-PEDES, bộ dữ liệu ICFG-PEDES nhấn mạnh nhiều hơn vào mô tả chi tiết, tinh vi (fine-grained) về con người, đồng thời loại bỏ bớt thông tin không liên quan về hành động và bối cảnh nền. Ngoài ra, nó cũng giải quyết hạn chế về nền ảnh đồng nhất của CUHK-PEDES bằng cách nhấn mạnh hơn vào sự thay đổi về ngoại hình.
+So với CUHK-PEDES, bộ dữ liệu ICFG-PEDES nhấn mạnh nhiều hơn vào mô tả chi tiết, tinh vi (fine-grained) về con người, đồng thời loại bỏ bớt thông tin không liên quan về hành động và bối cảnh nền. Ngoài ra, nó cũng giải quyết hạn chế về đồng nhất bối cảnh của CUHK-PEDES bằng cách tập trung hơn vào sự thay đổi về ngoại hình của người.
 
 Nhờ vậy, ICFG-PEDES trở thành bộ dữ liệu phù hợp cho những bài toán truy xuất hình ảnh và mô tả người ở mức độ khó và thách thức hơn.
 
