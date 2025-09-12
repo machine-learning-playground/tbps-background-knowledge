@@ -16,7 +16,7 @@ Nói cách khác, hàm này dùng để xác định xem ở vị trí **j** tro
 
 Sau đó, **mAP (mean Average Precision)** được tính bằng cách lấy trung bình các giá trị Average Precision (AP) của tất cả các truy vấn.
 
-![Công thức AP](/evaluation/metrics/mAP/img/mAP.png)
+![Công thức mAP](/evaluation/metrics/mAP/img/mAP.png)
 
 Ở đây:
 - **N** là tổng số lượng truy vấn.
