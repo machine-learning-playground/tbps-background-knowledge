@@ -22,6 +22,61 @@ Sau đó, **mAP (mean Average Precision)** được tính bằng cách lấy tru
 - **N** là tổng số lượng truy vấn.
 - **∑** biểu thị phép cộng (tổng) được thực hiện trên tất cả các truy vấn.
 
+## 🧾 Ví dụ tính Average Precision (AP) và mean Average Precision (mAP)
+
+### Giả định
+Giả sử ta có một **query A** và một danh sách kết quả ảnh được xếp hạng theo độ giống.  
+Trong danh sách này, có **3 ảnh đúng** nằm ở vị trí **rank 2, 4, 7**.
+
+---
+
+### Danh sách kết quả
+
+| Rank | Ảnh  | Đúng/Sai |
+|------|------|----------|
+| 1    | ❌   | Sai     |
+| 2    | ✅   | Đúng    |
+| 3    | ❌   | Sai     |
+| 4    | ✅   | Đúng    |
+| 5    | ❌   | Sai     |
+| 6    | ❌   | Sai     |
+| 7    | ✅   | Đúng    |
+
+---
+
+### Tính Precision tại các rank có ảnh đúng
+
+- **Rank 2:**  
+  Số ảnh đúng tính đến rank 2 = 1  
+  P@2 = 1/2 = 0.5
+
+- **Rank 4:**  
+  Số ảnh đúng tính đến rank 4 = 2  
+  P@4 = 2/4 = 0.5
+
+- **Rank 7:**  
+  Số ảnh đúng tính đến rank 7 = 3  
+  P@7 = 3/7 = 0.4286
+
+---
+
+### Average Precision (AP) cho query A
+Lấy trung bình precision tại các vị trí đúng:
+
+**AP** = (P@2 + P@4 + P@7)/3 = (0.5 + 0.5 + 0.4286)/3 = 0.4762
+
+→ **AP = 47.62%** cho query A.
+
+---
+
+### mean Average Precision (mAP)
+Nếu có nhiều query (A, B, C, ...), ta sẽ tính AP cho từng query như trên,  
+sau đó lấy trung bình tất cả các AP:
+
+**mAP** = 1/N * ∑AP_i
+
+Trong ví dụ này chỉ có 1 query → **mAP = 47.62%**.
+
 ## 📊 Code
 Đây chính là phần RaSa dùng để tính mAP, đã rút gọn ra thành function compute_mAP() để có thể được gọi độc lập.
 

@@ -8,5 +8,5 @@ Sau đó, Rank-n accuracy được tính bằng trung bình của hàm này trê
 ![Công thức Rank-n](/evaluation/metrics/rank-n-accuracy/img/rank-n-accuracy.png)
 
 Trong đó:
-N là tổng số truy vấn.
-∑ là phép cộng trên toàn bộ các truy vấn.
+- **N** là tổng số truy vấn.
+- **∑** là phép cộng trên toàn bộ các truy vấn.
