@@ -55,7 +55,6 @@ Một số phương pháp không dựa vào giám sát tường minh (explicit s
 ## Local-Global Correlation
 
 Một số phương pháp tập trung xử lý vấn đề **mối quan hệ giữa đặc trưng cục bộ (local) và đặc trưng tổng thể (global)** trong không gian embedding.
-
 - **Wang et al. [83]** đề xuất **Divide and Merge Embedding (DME)** framework cho bài toán **text-based person search.**
     - Ý tưởng: Trước tiên chia nhỏ (divide) để học được các đặc trưng chi tiết ở từng bộ phận cục bộ của người đi bộ.
     - Sau đó gộp lại (merge) các chi tiết này vào biểu diễn toàn cục.
@@ -67,3 +66,22 @@ Một số phương pháp tập trung xử lý vấn đề **mối quan hệ gi�
 [83] C. Wang, Z. Luo, Z. Zhong, S. Li, Divide-and-merge the embedding space for cross-modality person search, Neurocomputing 463 (2021) 388–399.
 
 [84] F. Li, H. Zhou, H. Li, Y. Zhang, Z. Yu, Person text-image matching via text-feature interpretability embedding and external attack node implantation, IEEE Transactions on Emerging Topics in Computational Intelligence (2024).
+
+## Multi-Branch Representation
+
+Biểu diễn đa nhánh (multi-branch) được dùng để cho phép mô hình **so khớp các đặc trưng hình ảnh theo cách thích ứng với văn bản.**
+- **Chen et al. [8]** sử dụng kiến trúc đa nhánh trong quá trình học, và đề xuất một chiến lược so khớp đa giai đoạn giữa hai miền (ảnh và văn bản). Cách này giúp giảm dần khoảng cách giữa hai miền ở cả mức **thấp (low-level), cục bộ (local), và toàn cục (global).**
+- **Li et al. [85]** thì đưa ra framework **Joint Label and Feature Alignment (TFAF)** để giảm khoảng cách **giữa hai miền (inter-modal gap)** và **giữa các lớp trong cùng miền (intra-class gap).**
+    - Họ xây dựng mạng học hai nhánh song song (dual-path) để trích đặc trưng và căn chỉnh.
+    - Có thêm một module sinh văn bản để tạo chuỗi nhãn từ đặc trưng hình ảnh, phục vụ cho việc căn chỉnh nhãn.
+    - Đồng thời, họ còn dùng một module tương tác hợp nhất với chiến lược fusion nhiều giai đoạn để loại bỏ sự khác biệt giữa các miền.
+
+[8] Y. Chen, G. Zhang, Y. Lu, Z. Wang, Y. Zheng, Tipcb: A simple but effective part-based convolutional baseline for text-based person search, Neurocomputing 494 (2022) 171–181.
+
+[85] S. Li, A. Lu, Y. Huang, C. Li, L. Wang, Joint token and feature alignment framework for text-based person search, IEEE Signal Processing Letters 29 (2022) 2238–2242.
+
+## Summary
+
+Trong các bài toán tìm kiếm người (pedestrian retrieval), kỹ thuật **multi-scale fusion** giúp cải thiện hiệu quả bằng cách phối hợp thông tin hình ảnh và văn bản ở nhiều mức độ và nhiều độ chi tiết khác nhau.
+
+Những phương pháp sử dụng **target detection** hoặc thêm các **mạng nhánh phụ** để phát hiện vùng quan trọng và trích xuất đặc trưng cục bộ thường cho kết quả chính xác cao hơn. Tuy nhiên, đổi lại, chúng làm tăng độ phức tạp của mô hình và tiêu tốn chi phí tính toán lớn hơn.
