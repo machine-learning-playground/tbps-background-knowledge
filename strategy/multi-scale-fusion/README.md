@@ -35,3 +35,19 @@ Một số hướng nghiên cứu tập trung vào việc **căn chỉnh (alignm
 [78] Z. Ji, J. Hu, D. Liu, L. Y. Wu, Y. Zhao, Asymmetric cross-scale alignment for text-based person search, IEEE Transactions on Multimedia 25 (2022) 7699–7709.
 
 [80] C. Wang, Z. Luo, Y. Lin, S. Li, Text-based person search via multigranularity embedding learning, in: Proceedings of the Thirtieth International Joint Conference on Artificial Intelligence, International Joint Conferences on Artificial Intelligence Organization, 2021, pp. 1068–1074.
+
+## Implicit Aggregation Alignment
+
+Một số phương pháp không dựa vào giám sát tường minh (explicit supervision) hay tương tác phức tạp giữa ảnh và văn bản, mà thay vào đó tìm cách **căn chỉnh (align) đặc trưng một cách ngầm định.**
+- **Yan et al. [81]** đề xuất một module **Implicit Local Alignment**, trong đó đặc trưng ảnh và văn bản được **tự động gom nhóm (aggregate)** vào các **trung tâm chủ đề ngữ nghĩa chung giữa hai modality (modality-shared semantic topic centers).**
+    - Cách này giúp mô hình ngầm học được sự tương ứng chi tiết (fine-grained correspondences) giữa ảnh và văn bản mà không cần thêm nhãn giám sát bổ sung.
+    - Đồng thời, nó vẫn giữ thêm bước căn chỉnh toàn cục (global alignment) để tăng độ ổn định.
+
+- **Gao et al. [82]** đề xuất phương pháp **NAFS (Non-Local Alignment on Full Scale)**, trong đó:
+    - Dùng một **ladder network** để trích xuất đặc trưng ảnh **ở kích thước đầy đủ**, nhưng vẫn giữ được tính cục bộ (locality).
+    - Sử dụng mô hình ngôn ngữ với **local constraint attention** để tạo ra biểu diễn văn bản ở nhiều thang đo khác nhau.
+    - Cuối cùng, áp dụng **context non-local attention** để phát hiện những sự tương ứng tiềm ẩn (potential alignments) **trên nhiều mức độ cùng lúc**.
+
+[81] S. Yan, H. Tang, L. Zhang, J. Tang, Image-specific information suppression and implicit local alignment for text-based person search, IEEE transactions on neural networks and learning systems (2023).
+
+[82] C. Gao, G. Cai, X. Jiang, F. Zheng, J. Zhang, Y. Gong, P. Peng, X. Guo, X. Sun, Contextual non-local alignment over fullscale representation for text-based person search, arXiv preprint arXiv:2101.03036 (2021).
