@@ -51,3 +51,19 @@ Một số phương pháp không dựa vào giám sát tường minh (explicit s
 [81] S. Yan, H. Tang, L. Zhang, J. Tang, Image-specific information suppression and implicit local alignment for text-based person search, IEEE transactions on neural networks and learning systems (2023).
 
 [82] C. Gao, G. Cai, X. Jiang, F. Zheng, J. Zhang, Y. Gong, P. Peng, X. Guo, X. Sun, Contextual non-local alignment over fullscale representation for text-based person search, arXiv preprint arXiv:2101.03036 (2021).
+
+## Local-Global Correlation
+
+Một số phương pháp tập trung xử lý vấn đề **mối quan hệ giữa đặc trưng cục bộ (local) và đặc trưng tổng thể (global)** trong không gian embedding.
+
+- **Wang et al. [83]** đề xuất **Divide and Merge Embedding (DME)** framework cho bài toán **text-based person search.**
+    - Ý tưởng: Trước tiên chia nhỏ (divide) để học được các đặc trưng chi tiết ở từng bộ phận cục bộ của người đi bộ.
+    - Sau đó gộp lại (merge) các chi tiết này vào biểu diễn toàn cục.
+    - Nhờ vậy, mô hình vừa giữ được thông tin chi tiết vừa cải thiện sự căn chỉnh (alignment) ở mức tổng thể.
+- **Ref. [84]:** đưa ra một phương pháp xây dựng đặc trưng cho **person-text-image matching** bằng cách **đặt các đặc trưng cùng ngữ nghĩa vào cùng vị trí không gian (spatial positions).**
+    - Cách làm này đảm bảo tính nhất quán ngữ nghĩa (semantic consistency) và tính dễ diễn giải (interpretability) cho đặc trưng toàn cục.
+    - Đồng thời, nó cũng khắc phục vấn đề sai lệch (misalignment) khi gộp các đặc trưng cục bộ vào global embedding.
+
+[83] C. Wang, Z. Luo, Z. Zhong, S. Li, Divide-and-merge the embedding space for cross-modality person search, Neurocomputing 463 (2021) 388–399.
+
+[84] F. Li, H. Zhou, H. Li, Y. Zhang, Z. Yu, Person text-image matching via text-feature interpretability embedding and external attack node implantation, IEEE Transactions on Emerging Topics in Computational Intelligence (2024).
