@@ -49,3 +49,11 @@
 - Ref. [88] dùng channel attention để tập trung vào người trong ảnh bằng cách mở rộng đầu vào: ghép thêm **14 bản đồ độ tin cậy tư thế (pose confidence maps)** với 3 kênh ảnh gốc, từ đó tăng cường biểu diễn trực quan.
 
 Tuy nhiên, **spatial và channel attention** thường được xây dựng trong một không gian đặc trưng nhất định. Điều này khiến chúng khó xử lý những tình huống phức tạp hơn, ví dụ như khi đầu vào là đa phương thức (multimodal) hoặc liên quan đến các quan hệ ngữ nghĩa phức tạp.
+
+## Mixed Attention
+Mixed Attention (chú ý hỗn hợp) là cách kết hợp nhiều loại attention khác nhau để tăng cường khả năng trích xuất đặc trưng.
+- **Li et al.** [89] đề xuất một mạng nơ-ron tích chập dạng *cubic attention* kết hợp **spatial attention** (chú ý không gian) và **channel attention** (chú ý theo kênh). Cách này giúp khai thác tối đa thông tin bổ sung từ nhiều thang đo khác nhau, qua đó giải quyết tốt hơn bài toán *cross-modal alignment* (căn chỉnh giữa văn bản và hình ảnh).
+- **Wang et al.** [83] thiết kế **Feature Division Network (FDN)**, trong đó input được chia thành **K biểu diễn ngữ nghĩa cục bộ** thông qua self-attention. Mỗi biểu diễn tương ứng với một phần cơ thể khác nhau của người, sau đó các biểu diễn này được gộp lại thành một embedding toàn cục gọn gàng.
+- **Yang et al.** [37] sử dụng kiến trúc có cả **nhánh văn bản, hình ảnh và thuộc tính.** Hệ thống này khai thác mixed attention để kết hợp thông tin bổ sung giữa các đặc trưng, từ đó đạt được khả năng trộn (fusion) mạnh mẽ hơn.
+
+[37] S. Yang, Y. Zhou, Z. Zheng, Y. Wang, L. Zhu, Y. Wu, Towards unified text-based person retrieval: A large-scale multi-attribute and language search benchmark, in: Proceedings of the 31st ACM International Conference on Multimedia, 2023, pp. 4492–4501.
