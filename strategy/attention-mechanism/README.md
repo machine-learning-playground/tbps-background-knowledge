@@ -83,3 +83,12 @@ Một số nghiên cứu tiêu biểu:
 - **Wang et al. [86] – IMG-Net**: Kết hợp **intra-modal self-attention** (tự chú ý trong cùng modality) và **cross-modal hard region attention** (chọn vùng ảnh có liên quan trực tiếp đến từ mô tả). Mục tiêu: trích xuất thông tin ngữ nghĩa đa mức độ chi tiết (multi-granularity).
 - **Zheng et al.** [21]: Đề xuất **Hierarchical Gumbel Hard Attention Module**, dùng thuật toán **Gumbel top-k reparameterization** để chọn các vùng ảnh và từ/cụm từ tương ứng có liên quan ngữ nghĩa mạnh.
 - **Jing et al. [88] – Cascade Attention Network (CAN)**: Mạng chọn lọc dần dần (progressive), tập trung vào độ tương đồng giữa chữ trong ảnh (character image) và từ mô tả. Sử dụng **similarity-based hard attention** để chọn ra các điểm tương đồng quan trọng nhất giữa mô tả và ảnh đã được chia nhỏ.
+
+## Summary
+**Attention mechanisms** rất quan trọng trong việc tăng cường **căn chỉnh giữa văn bản và hình ảnh** (cross-modal alignment), đặc biệt cho các tác vụ **so khớp chi tiết (fine-grained matching)** trong Text-based Person Re-ID.
+
+Tuy nhiên, nhược điểm lớn là **tốn nhiều chi phí tính toán**.
+- Vì phải xử lý **theo cặp (pairwise)** giữa ảnh và văn bản.
+- Độ phức tạp có thể tăng lên **O(MN)** với M ảnh trong gallery và N câu query → dễ bị “bùng nổ” tính toán khi dữ liệu lớn.
+
+Việc **phân loại và hệ thống hóa các loại attention** (hard, soft, spatial, channel, mixed, non-local, cross-modal, …) giúp ta **hiểu rõ đóng góp và chiến lược** mà các nghiên cứu đã sử dụng để cải thiện hiệu quả so khớp.
