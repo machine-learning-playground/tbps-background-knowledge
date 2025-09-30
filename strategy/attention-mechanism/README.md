@@ -57,3 +57,11 @@ Mixed Attention (chú ý hỗn hợp) là cách kết hợp nhiều loại atten
 - **Yang et al.** [37] sử dụng kiến trúc có cả **nhánh văn bản, hình ảnh và thuộc tính.** Hệ thống này khai thác mixed attention để kết hợp thông tin bổ sung giữa các đặc trưng, từ đó đạt được khả năng trộn (fusion) mạnh mẽ hơn.
 
 [37] S. Yang, Y. Zhou, Z. Zheng, Y. Wang, L. Zhu, Y. Wu, Towards unified text-based person retrieval: A large-scale multi-attribute and language search benchmark, in: Proceedings of the 31st ACM International Conference on Multimedia, 2023, pp. 4492–4501.
+
+## Non-Local and Contextual Attention
+Cơ chế **Non-local và Contextual Attention** tập trung vào việc mô hình hóa **phụ thuộc dài hạn (long-term dependencies)** và căn chỉnh đặc trưng dựa trên **ngữ nghĩa** thay vì chỉ dựa vào các quy tắc cứng nhắc.
+- **Farooq et al.** [90] áp dụng **non-local attention** sau khi tính toán mối quan hệ giữa các đặc trưng văn bản, giúp mô hình hóa sự phụ thuộc giữa các cụm từ (text phrases).
+- **Gao et al.** [82] đề xuất **Context Non-Local Attention**, lấy cảm hứng từ self-attention, để căn chỉnh đặc trưng giữa hai modality (ảnh và văn bản) theo hướng **thô đến tinh (coarse-to-fine)** dựa trên ngữ nghĩa. Điểm hay ở đây là không cần dựa vào quy tắc được định nghĩa trước.
+- **Wang et al.** [79] giới thiệu **Part-based Multi-scale Attention Network (PMAN)** – một kiến trúc có nhiều nhánh attention trong framework hai nhánh (dual-path). Mạng này trích xuất **đặc trưng ngữ nghĩa hình ảnh ở nhiều thang đo**, sau đó căn chỉnh với đặc trưng văn bản để cải thiện độ chính xác tìm kiếm.
+
+[79] Y. Wang, D. Qi, C. Zhao, Part-based multi-scale attention network for text-based person search, in: PRCV 2022, Springer, 2022, pp. 462–474.
