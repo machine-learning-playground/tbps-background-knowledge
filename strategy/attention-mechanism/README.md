@@ -65,3 +65,21 @@ Cơ chế **Non-local và Contextual Attention** tập trung vào việc mô hì
 - **Wang et al.** [79] giới thiệu **Part-based Multi-scale Attention Network (PMAN)** – một kiến trúc có nhiều nhánh attention trong framework hai nhánh (dual-path). Mạng này trích xuất **đặc trưng ngữ nghĩa hình ảnh ở nhiều thang đo**, sau đó căn chỉnh với đặc trưng văn bản để cải thiện độ chính xác tìm kiếm.
 
 [79] Y. Wang, D. Qi, C. Zhao, Part-based multi-scale attention network for text-based person search, in: PRCV 2022, Springer, 2022, pp. 462–474.
+
+## Cross-Modal Attention
+**Cross-Modal Attention** tập trung vào việc trực tiếp học sự tương tác giữa hai modality (ảnh và văn bản) để cải thiện khả năng căn chỉnh và biểu diễn chung.
+- **Lee et al.** [91]: Đề xuất **Stacked Cross Attention**, cho phép tìm ra các căn chỉnh tiềm năng đầy đủ giữa ảnh và văn bản. Ở đây, vùng ảnh và từ trong câu được dùng làm ngữ cảnh cho nhau để suy ra độ tương đồng giữa ảnh và văn bản.
+- **Jiang et al.** [40]: Đưa ra một **bộ mã hóa tương tác đa phương thức mới**, trong đó đặc trưng văn bản và hình ảnh được **trộn lẫn qua một lớp cross-modal attention**, rồi đưa vào **một khối Transformer duy nhất**. Cách này giúp mô hình học **biểu diễn toàn cục** của ảnh và văn bản trong không gian nhúng chung.
+- **Chen et al.** [93]: Sử dụng cross-attention để cho phép **embedding của một modality** (ví dụ: ảnh) được **bổ sung bởi embedding gộp từ modality kia** (ví dụ: văn bản) trong cùng ngữ cảnh. Nhờ vậy, tránh được việc mất thông tin đặc trưng riêng của từng modality.
+
+[93] D. Chen, M. Wang, H. Chen, L. Wu, J. Qin, W. Peng, Cross-modal retrieval with heterogeneous graph embedding, in: Proceedings of the 30th ACM International Conference on Multimedia, Association for Computing Machinery, New York, NY, USA, 2022, pp. 3291–3300.
+
+## Hard Attention
+Khác với **soft attention** (phân bổ trọng số trên toàn bộ vùng ảnh hoặc toàn bộ từ ngữ), **hard attention** tập trung chọn **một số vùng/đặc trưng có liên quan ngữ nghĩa mạnh nhất**. Điều này giúp:
+- **Căn chỉnh chính xác hơn** giữa ảnh và văn bản.
+- **Giảm dư thừa thông tin** không liên quan (ví dụ: background, vật thể khác ngoài người).
+
+Một số nghiên cứu tiêu biểu:
+- **Wang et al. [86] – IMG-Net**: Kết hợp **intra-modal self-attention** (tự chú ý trong cùng modality) và **cross-modal hard region attention** (chọn vùng ảnh có liên quan trực tiếp đến từ mô tả). Mục tiêu: trích xuất thông tin ngữ nghĩa đa mức độ chi tiết (multi-granularity).
+- **Zheng et al.** [21]: Đề xuất **Hierarchical Gumbel Hard Attention Module**, dùng thuật toán **Gumbel top-k reparameterization** để chọn các vùng ảnh và từ/cụm từ tương ứng có liên quan ngữ nghĩa mạnh.
+- **Jing et al. [88] – Cascade Attention Network (CAN)**: Mạng chọn lọc dần dần (progressive), tập trung vào độ tương đồng giữa chữ trong ảnh (character image) và từ mô tả. Sử dụng **similarity-based hard attention** để chọn ra các điểm tương đồng quan trọng nhất giữa mô tả và ảnh đã được chia nhỏ.
