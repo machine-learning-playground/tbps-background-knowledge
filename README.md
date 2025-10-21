@@ -1,4 +1,4 @@
-# Đề tài luận văn gợi ý
+# Đề tài luận văn gợi ý (AI generated)
 
 **"Zero-shot / Few-shot Text-based Person Search with Data Augmentation & Prompting"**
 
