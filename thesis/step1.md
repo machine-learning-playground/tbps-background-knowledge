@@ -33,16 +33,16 @@ Những thứ này tối ưu mạnh cho:
 
 ### 3) Nhưng TG-MIM & IS-GVFC vẫn có khả năng bổ sung — lý luận chi tiết
 **A. TG-MIM bổ sung gì mà TBPS-CLIP khó thay thế?**
-- **Local task relevance (text→patch link)**: Contrastive losses tối ưu similarity toàn cục; SS/MVS tạo invariance nhưng không ép token/patch cụ thể phải liên quan tới từ cụ thể trong query. TG-MIM trực tiếp làm cho text hướng dẫn tái tạo patch, tức là nó dạy encoder mối liên hệ cục bộ giữa từ và vùng ảnh — hữu ích khi các cá nhân chỉ khác nhau ở chi tiết nhỏ (giày, balo, hoa văn).
-- **Attention grounding**: TG-MIM thường sẽ khiến cross-attention trọng số nhạy hơn với từ quan trọng → cải thiện interpretability và giúp downstream retrieval khi câu truy vấn nhấn vào chi tiết.
-- **Domain adaptation nhỏ**: Nếu CLIP pretraining dùng ảnh tự nhiên, TG-MIM trên dữ liệu pedestrian ép encoder thích nghi với phân phối pedestrian-specific local cues.
+- **Local task relevance (text→patch link):** Contrastive losses tối ưu similarity toàn cục; SS/MVS tạo invariance nhưng không ép token/patch cụ thể phải liên quan tới từ cụ thể trong query. TG-MIM trực tiếp làm cho text hướng dẫn tái tạo patch, tức là nó dạy encoder mối liên hệ cục bộ giữa từ và vùng ảnh — hữu ích khi các cá nhân chỉ khác nhau ở chi tiết nhỏ (giày, balo, hoa văn).
+- **Attention grounding:** TG-MIM thường sẽ khiến cross-attention trọng số nhạy hơn với từ quan trọng → cải thiện interpretability và giúp downstream retrieval khi câu truy vấn nhấn vào chi tiết.
+- **Domain adaptation nhỏ:** Nếu CLIP pretraining dùng ảnh tự nhiên, TG-MIM trên dữ liệu pedestrian ép encoder thích nghi với phân phối pedestrian-specific local cues.
 
 Khi TBPS-CLIP đã có SS/MVS, TG-MIM vẫn có thể cải thiện hard examples (những truy vấn cần local cues). Vài paper báo cáo tăng nhỏ nhưng ổn định ở subset “hard”.
 
 **B. IS-GVFC bổ sung gì?**
-- **Toàn cục nhưng theo ID distribution**: Contrastive ITC tối ưu image↔text match; nó không tối ưu trực tiếp rằng các ảnh cùng ID (nhiều camera/times) phải gần nhau trong không gian ảnh nội tại. IS-GVFC ép điều đó thông qua phân phối nội ảnh → giảm identity confusion (khi 2 người khác ID mặc đồ giống nhau).
-- **Không cần mining/margin**: Triplet/contrastive pair mining có thể khó và nhạy. IS-GVFC tận dụng toàn bộ batch distribution, ổn định hơn khi batch composition đa dạng.
-- **Complementary objective**: Nó là objective intra-modal (visual→visual) bổ sung cho inter-modal (visual↔text) của TBPS-CLIP.
+- **Toàn cục nhưng theo ID distribution:** Contrastive ITC tối ưu image↔text match; nó không tối ưu trực tiếp rằng các ảnh cùng ID (nhiều camera/times) phải gần nhau trong không gian ảnh nội tại. IS-GVFC ép điều đó thông qua phân phối nội ảnh → giảm identity confusion (khi 2 người khác ID mặc đồ giống nhau).
+- **Không cần mining/margin:** Triplet/contrastive pair mining có thể khó và nhạy. IS-GVFC tận dụng toàn bộ batch distribution, ổn định hơn khi batch composition đa dạng.
+- **Complementary objective:** Nó là objective intra-modal (visual→visual) bổ sung cho inter-modal (visual↔text) của TBPS-CLIP.
 
 **C. Khi 2 aux tasks khả có ích nhất**
 - Datasets / queries với nhiều nhầm lẫn ID (quần áo giống, ánh sáng khác) → IS-GVFC hiệu quả.
@@ -50,30 +50,30 @@ Khi TBPS-CLIP đã có SS/MVS, TG-MIM vẫn có thể cải thiện hard example
 - Domain shift (suy luận trên dữ liệu khác về style/camera) → TG-MIM có thể giúp encoder bắt chi tiết domain-specific; IS-GVFC giúp ổn định embedding.
 
 ### 4) Khi nào khả năng bổ sung nhỏ hoặc không đáng kể
-- **TBPS-CLIP đã tối ưu triệt để và stacking many losses**: nếu TBPS-CLIP đã kết hợp R-ITC + SS-I + MVS-I + paraphrase augmentation và đã fine-tune kĩ, thì marginal gain từ TG-MIM/IS-GVFC có thể rất nhỏ (<<1% Rank@1).
+- **TBPS-CLIP đã tối ưu triệt để và stacking many losses:** nếu TBPS-CLIP đã kết hợp R-ITC + SS-I + MVS-I + paraphrase augmentation và đã fine-tune kĩ, thì marginal gain từ TG-MIM/IS-GVFC có thể rất nhỏ (<<1% Rank@1).
 - **Nếu test set đơn giản, không nhiều hard cases**, bạn sẽ khó thấy lợi ích.
-- **Chi phí training tăng**: TG-MIM và IS-GVFC đều tăng overhead (TG-MIM: reconstruct decoder/conv head; IS-GVFC: compute full similarity matrix). Nếu tài nguyên hạn chế, overhead có thể không xứng đáng.
+- **Chi phí training tăng:** TG-MIM và IS-GVFC đều tăng overhead (TG-MIM: reconstruct decoder/conv head; IS-GVFC: compute full similarity matrix). Nếu tài nguyên hạn chế, overhead có thể không xứng đáng.
 
 ### 5) KẾ HOẠCH THÍ NGHIỆM (để đo chính xác hiệu quả) — bắt buộc cho luận văn
 
 Thiết kế thí nghiệm phải trả lời: TG-MIM và IS-GVFC có mang lại cải tiến đáng kể so với TBPS-CLIP đã tối ưu không?
 
 **A. Baselines**
-- TBPS-CLIP (strong reimplementation) — reprod. best single-loss/stack combo (R-ITC + SS-I + MVS-I + augmentations) — gọi là Base.
-- Base + TG-MIM
-- Base + IS-GVFC
-- Base + TG-MIM + IS-GVFC (full)
-- (optional) VFE-TPS original and RaSa for comparison
+- **TBPS-CLIP (strong reimplementation)** — reprod. best single-loss/stack combo (R-ITC + SS-I + MVS-I + augmentations) — gọi là **Base**.
+- **Base + TG-MIM**
+- **Base + IS-GVFC**
+- **Base + TG-MIM + IS-GVFC** (full)
+- (optional) **VFE-TPS original** and **RaSa** for comparison
 
 **B. Datasets & splits**
 - CUHK-PEDES (standard), RSTPReid (if available).
-- Create "hard subset": queries where correct match is visually similar to distractors (same clothing color etc.). Evaluate separately.
-- Open-set test (unseen domain / unseen ID split): test generalization.
+- **Create "hard subset":** queries where correct match is visually similar to distractors (same clothing color etc.). Evaluate separately.
+- **Open-set test** (unseen domain / unseen ID split): test generalization.
 
 **C. Metrics**
 - Rank@1, Rank@5, mAP.
-- Hard-case gain: ΔRank@1 on hard subset.
-- Statistical test: run 3 seeds, report mean ± std, do paired t-test to verify significance (p<0.05).
+- **Hard-case gain:** ΔRank@1 on hard subset.
+- **Statistical test:** run 3 seeds, report mean ± std, do paired t-test to verify significance (p<0.05).
 
 **D. Computational cost reporting**
 - Training time per epoch, total epochs to converge, GPU memory, inference latency.
@@ -89,15 +89,15 @@ Thiết kế thí nghiệm phải trả lời: TG-MIM và IS-GVFC có mang lại
 - Schedule: ramp up aux losses after warming up Base training (e.g., first 5–10 epochs freeze CLIP then enable TG-MIM).
 
 ### 6) Practical recommendations (implementation & training strategy)
-- Start from TBPS-CLIP checkpoint (fast, less risky).
-- Phase training:
-    - Phase 1 (warm-up): train only contrastive (R-ITC/C-ITC) + SS/MVS as in TBPS-CLIP for stability (5–10 epochs).
-    - Phase 2: enable IS-GVFC with small weight λ_IS = 0.05 → 0.2 (tune). Batch size large (B ≥ 64) to have many pairwise comparisons. Temperature τ same as ITC (0.07–0.2).
-    - Phase 3: enable TG-MIM with λ_TG = 0.1 (tiny to start). Mask ratio = 0.3–0.5; reconstruction head light (Conv2D+PixelShuffle). Use L1 loss. After stable, possibly unfreeze few encoder layers.
-    - Phase 4: final joint fine-tune, tune λs by grid search (λ_IS ∈ {0.05,0.1,0.2}; λ_TG ∈ {0.05,0.1,0.2}).
-- Batch size: IS-GVFC benefits from larger batch (better estimation of distribution) — try to maximize batch size within memory.
-- Compute budget: measure tradeoff; if TG-MIM adds >>20–30% train time but only +0.2% Rank@1, consider removing.
-- Hyperparam gợi ý
+- **Start from TBPS-CLIP checkpoint** (fast, less risky).
+- **Phase training:**
+    - **Phase 1 (warm-up):** train only contrastive (R-ITC/C-ITC) + SS/MVS as in TBPS-CLIP for stability (5–10 epochs).
+    - **Phase 2:** enable IS-GVFC with small weight λ_IS = 0.05 → 0.2 (tune). Batch size large (B ≥ 64) to have many pairwise comparisons. Temperature τ same as ITC (0.07–0.2).
+    - **Phase 3:** enable TG-MIM with λ_TG = 0.1 (tiny to start). Mask ratio = 0.3–0.5; reconstruction head light (Conv2D+PixelShuffle). Use L1 loss. After stable, possibly unfreeze few encoder layers.
+    - **Phase 4:** final joint fine-tune, tune λs by grid search (λ_IS ∈ {0.05,0.1,0.2}; λ_TG ∈ {0.05,0.1,0.2}).
+- **Batch size:** IS-GVFC benefits from larger batch (better estimation of distribution) — try to maximize batch size within memory.
+- **Compute budget:** measure tradeoff; if TG-MIM adds >>20–30% train time but only +0.2% Rank@1, consider removing.
+- **Hyperparam gợi ý**
     - temperature τ (contrastive) = 0.07 (CLIP default) → tune 0.05–0.2
     - batch size = as large as memory allows (≥64 recommended for IS-GVFC)
     - mask ratio (TG-MIM) = 30–50%
